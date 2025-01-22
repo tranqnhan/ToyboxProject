@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://k43o5ofh4qb4"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_xot4o"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_h11no"]
+
+[sub_resource type="Curve2D" id="Curve2D_hhuyk"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(10.6192, 36.3839, -10.6192, -36.3839, 114, 65, 32.5, -6, -32.5, 6, 57, 14, -7.01256, -27.737, 7.01256, 27.737, 20, 81, -20.5464, 3.45755, 20.5464, -3.45755, 72, 107, -0.0900965, 0.461417, 0.0900965, -0.461417, 114, 65, 94.75, 13.25, -94.75, -13.25, 28, 174)
+}
+point_count = 6
+
+[node name="Number9" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xot4o")
+width = 128
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hhuyk")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -7.0
+offset_top = -84.0
+offset_right = 136.0
+offset_bottom = 258.0
+theme = ExtResource("2_h11no")
+text = "9"

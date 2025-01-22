@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xk6njkiyimq"]
+
+[ext_resource type="Script" path="res://Scenes/LessonMenu/lesson_menu.gd" id="1_0se5q"]
+[ext_resource type="Theme" uid="uid://cogqr3ns3qw04" path="res://Styles/main_theme.tres" id="2_lvxwl"]
+
+[node name="LessonMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0se5q")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="LessonGroup" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="AdditionButton" type="Button" parent="MarginContainer/HBoxContainer/LessonGroup"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme = ExtResource("2_lvxwl")
+text = "Addition +"
+
+[node name="SubtractionButton" type="Button" parent="MarginContainer/HBoxContainer/LessonGroup"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme = ExtResource("2_lvxwl")
+text = "Subtraction -"
+
+[node name="MultiplicationButton" type="Button" parent="MarginContainer/HBoxContainer/LessonGroup"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme = ExtResource("2_lvxwl")
+text = "Multiplication ×"
+
+[node name="DivisionButton" type="Button" parent="MarginContainer/HBoxContainer/LessonGroup"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme = ExtResource("2_lvxwl")
+text = "Division ÷"
+
+[node name="ProblemGroup" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/ProblemGroup"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Problems" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ProblemGroup/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="NavigationButtons" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ProblemGroup"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GotoLesson" type="Button" parent="MarginContainer/HBoxContainer/ProblemGroup/NavigationButtons"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_lvxwl")
+text = "Practice!"
+
+[node name="GotoWriting" type="Button" parent="MarginContainer/HBoxContainer/ProblemGroup/NavigationButtons"]
+custom_minimum_size = Vector2(350, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_lvxwl")
+text = "Write!"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LessonGroup/AdditionButton" to="." method="_on_addition_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LessonGroup/SubtractionButton" to="." method="_on_subtraction_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LessonGroup/MultiplicationButton" to="." method="_on_multiplication_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LessonGroup/DivisionButton" to="." method="_on_division_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ProblemGroup/NavigationButtons/GotoLesson" to="." method="_on_goto_lesson_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ProblemGroup/NavigationButtons/GotoWriting" to="." method="_on_goto_writing_pressed"]

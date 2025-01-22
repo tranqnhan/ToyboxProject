@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf6mtq28x3qj8"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_jklo0"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_icl1i"]
+
+[sub_resource type="Curve2D" id="Curve2D_d6b74"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(-47.5, 28.5, 47.5, -28.5, 23.0152, 26.0698, 0.5, -25.2071, -0.5, 25.2071, 107, 48, 0, 0, 0, 0, 13, 173, 0, 0, 0, 0, 111, 174)
+}
+point_count = 4
+
+[node name="Number2" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jklo0")
+width = 128
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_d6b74")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -83.0
+offset_right = 135.0
+offset_bottom = 259.0
+theme = ExtResource("2_icl1i")
+text = "2"

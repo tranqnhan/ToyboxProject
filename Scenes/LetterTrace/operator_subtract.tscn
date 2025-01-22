@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ijodbcre345d"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_tqbic"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_lfmlu"]
+
+[sub_resource type="Curve2D" id="Curve2D_ut8u3"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 11, 99, 0, 0, 0, 0, 104, 99)
+}
+point_count = 2
+
+[node name="OperatorSubtract" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tqbic")
+width = 115
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ut8u3")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 4.0
+offset_top = -200.0
+offset_right = 147.0
+offset_bottom = 142.0
+theme = ExtResource("2_lfmlu")
+text = "_"

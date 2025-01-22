@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://l7rc3qcn8tai"]
+
+[resource]
+Label/font_sizes/font_size = 250
+RichTextLabel/constants/outline_size = 10
+RichTextLabel/font_sizes/normal_font_size = 250

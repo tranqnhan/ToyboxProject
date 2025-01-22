@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=3 uid="uid://dd12ailu3s2x5"]
+
+[ext_resource type="Script" path="res://Scenes/ArithmeticSession/arithmetic_session.gd" id="1_x4htu"]
+[ext_resource type="Script" path="res://Scenes/ArithmeticSession/problem_trackers.gd" id="2_0yqa8"]
+[ext_resource type="PackedScene" uid="uid://c5qhlqbesalgu" path="res://Scenes/ArithmeticSession/problem_set_progress_tracker.tscn" id="3_ngtxs"]
+[ext_resource type="PackedScene" uid="uid://dxsaedy1sr4pt" path="res://Scenes/ArithmeticSession/coin_particles.tscn" id="4_sipf7"]
+[ext_resource type="Texture2D" uid="uid://dq8go8f02b0y5" path="res://Sprites/pointer.png" id="5_naoh2"]
+[ext_resource type="Script" path="res://Scenes/ArithmeticSession/work_group_handler.gd" id="6_s4u3y"]
+[ext_resource type="Theme" uid="uid://cogqr3ns3qw04" path="res://Styles/main_theme.tres" id="7_7jtun"]
+[ext_resource type="PackedScene" uid="uid://dphciiehbhv01" path="res://Scenes/Numpad/numpad.tscn" id="8_1hth2"]
+[ext_resource type="Theme" uid="uid://034nyovh2rmw" path="res://Styles/failure_theme.tres" id="9_h8a70"]
+[ext_resource type="Theme" uid="uid://c16s3rywm1hc7" path="res://Styles/success_theme.tres" id="10_4rde2"]
+[ext_resource type="Script" path="res://Scenes/ArithmeticSession/correct_answer_icon.gd" id="11_p4kqc"]
+[ext_resource type="PackedScene" uid="uid://bg686hc2mpvmh" path="res://Scenes/LetterTrace/letter_trace_box.tscn" id="12_yfr0k"]
+
+[node name="ArithmeticSession" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4htu")
+coins_per_correct_answer = 10
+
+[node name="ProblemTrackers" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 52.0
+grow_horizontal = 2
+script = ExtResource("2_0yqa8")
+problem_set_progress_tracker = ExtResource("3_ngtxs")
+coin_particles = ExtResource("4_sipf7")
+
+[node name="PointerTexture" type="TextureRect" parent="ProblemTrackers"]
+texture_filter = 1
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(16, 20)
+texture = ExtResource("5_naoh2")
+
+[node name="CenterContainer" type="CenterContainer" parent="ProblemTrackers"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProblemTrackers/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="WorkGroup" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -157.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_s4u3y")
+
+[node name="ProblemGroup" type="HBoxContainer" parent="WorkGroup"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Question" type="Label" parent="WorkGroup/ProblemGroup"]
+layout_mode = 2
+theme = ExtResource("7_7jtun")
+text = "Question"
+
+[node name="AnswerBox" type="Label" parent="WorkGroup/ProblemGroup"]
+layout_mode = 2
+theme = ExtResource("7_7jtun")
+text = "Answer"
+horizontal_alignment = 1
+
+[node name="Numpad" parent="WorkGroup" instance=ExtResource("8_1hth2")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="IncorrectGroup" type="VBoxContainer" parent="WorkGroup"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Label1" type="Label" parent="WorkGroup/IncorrectGroup"]
+layout_mode = 2
+theme = ExtResource("9_h8a70")
+text = "Incorrect"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="WorkGroup/IncorrectGroup"]
+layout_mode = 2
+theme = ExtResource("7_7jtun")
+text = "The correct answer is"
+horizontal_alignment = 1
+
+[node name="CorrectAnswer" type="Label" parent="WorkGroup/IncorrectGroup"]
+layout_mode = 2
+theme = ExtResource("10_4rde2")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="WorkGroup/IncorrectGroup"]
+layout_mode = 2
+theme = ExtResource("7_7jtun")
+text = "but that's ok, you can try again later!"
+
+[node name="MarginContainer" type="MarginContainer" parent="WorkGroup/IncorrectGroup"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="GotoPractice" type="Button" parent="WorkGroup/IncorrectGroup/MarginContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("9_h8a70")
+text = "next"
+
+[node name="CorrectLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 26.0
+theme = ExtResource("10_4rde2")
+theme_override_font_sizes/font_size = 18
+text = "Correct!"
+script = ExtResource("11_p4kqc")
+appear_range_x = Vector2(250, 950)
+appear_range_y = Vector2(150, 300)
+appear_length = 2.0
+appear_shift = Vector2(20, -20)
+
+[node name="External" type="Node" parent="."]
+
+[node name="LetterTraceBox" parent="External" instance=ExtResource("12_yfr0k")]
+
+[connection signal="answer_result" from="." to="ProblemTrackers" method="_on_arithmetic_session_answer_result"]
+[connection signal="answer_result" from="." to="WorkGroup" method="_on_arithmetic_session_answer_result"]
+[connection signal="answer_result" from="." to="CorrectLabel" method="_on_arithmetic_session_answer_result"]
+[connection signal="init_problems" from="." to="ProblemTrackers" method="_on_arithmetic_session_init_problems"]
+[connection signal="problem_changed" from="." to="ProblemTrackers" method="_on_arithmetic_session_problem_changed"]
+[connection signal="problem_changed" from="." to="WorkGroup" method="_on_arithmetic_session_problem_changed"]
+[connection signal="user_answer_changed" from="." to="WorkGroup" method="_on_arithmetic_session_user_answer_changed"]
+[connection signal="sort_children" from="ProblemTrackers/CenterContainer/HBoxContainer" to="ProblemTrackers" method="_on_h_box_container_sort_children"]
+[connection signal="numpad_delete_pressed" from="WorkGroup/Numpad" to="." method="_on_numpad_delete_pressed"]
+[connection signal="numpad_enter_pressed" from="WorkGroup/Numpad" to="." method="_on_numpad_enter_pressed"]
+[connection signal="numpad_number_pressed" from="WorkGroup/Numpad" to="." method="_on_numpad_number_pressed"]
+[connection signal="pressed" from="WorkGroup/IncorrectGroup/MarginContainer/GotoPractice" to="." method="_on_goto_practice_pressed"]
+[connection signal="finished" from="External/LetterTraceBox" to="." method="_on_letter_trace_box_finished"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu6mgp4e3ikpg"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_dnljr"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_oc6tw"]
+
+[sub_resource type="Curve2D" id="Curve2D_1nte3"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 58, 52)
+}
+point_count = 1
+
+[sub_resource type="Curve2D" id="Curve2D_vqpnj"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 10, 94, 0, 0, 0, 0, 105, 94)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_jfgp5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 58, 137)
+}
+point_count = 1
+
+[node name="OperatorDivide" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dnljr")
+width = 118
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1nte3")
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(2.83545, 4.575)
+scale = Vector2(0.974684, 0.9625)
+curve = SubResource("Curve2D_vqpnj")
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jfgp5")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -13.0
+offset_top = -85.0
+offset_right = 130.0
+offset_bottom = 257.0
+theme = ExtResource("2_oc6tw")
+text = "÷"

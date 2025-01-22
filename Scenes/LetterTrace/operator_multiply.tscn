@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://brghy271mn3n5"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_5oe0j"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_ew26w"]
+
+[sub_resource type="Curve2D" id="Curve2D_1nte3"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 17, 52, 0, 0, 0, 0, 99, 135)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_vqpnj"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 97.6364, 51.3507, 0, 0, 0, 0, 15.5584, 136.545)
+}
+point_count = 2
+
+[node name="OperatorMultiply" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5oe0j")
+width = 118
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1nte3")
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(2.83545, 4.575)
+scale = Vector2(0.974684, 0.9625)
+curve = SubResource("Curve2D_vqpnj")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -13.0
+offset_top = -85.0
+offset_right = 1442.0
+offset_bottom = 292.0
+theme = ExtResource("2_ew26w")
+text = "×"
+metadata/_edit_lock_ = true

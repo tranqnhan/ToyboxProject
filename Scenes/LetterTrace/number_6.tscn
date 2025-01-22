@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmy0u5qj77gyr"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_xatjl"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_v5ae2"]
+
+[sub_resource type="Curve2D" id="Curve2D_eclxb"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(54, 10.5, -54, -10.5, 98, 17, 3, -24, -3, 24, 17, 86, -44.1568, -10.8596, 44.1568, 10.8596, 58, 176, 1.5563, 22.4541, -1.5563, -22.4541, 114, 119, 39.5, -59, -39.5, 59, 23, 114)
+}
+point_count = 5
+
+[node name="Number6" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xatjl")
+width = 126
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(0, -1)
+curve = SubResource("Curve2D_eclxb")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -8.0
+offset_top = -82.0
+offset_right = 135.0
+offset_bottom = 260.0
+theme = ExtResource("2_v5ae2")
+text = "6"

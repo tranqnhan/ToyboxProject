@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxsaedy1sr4pt"]
+
+[ext_resource type="Texture2D" uid="uid://dtk2mx7pksc7p" path="res://Sprites/coin.png" id="1_mjfgl"]
+
+[sub_resource type="Gradient" id="Gradient_mstws"]
+offsets = PackedFloat32Array(0, 0.846591, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CoinParticles" type="CPUParticles2D"]
+emitting = false
+amount = 10
+lifetime = 4.0
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+texture = ExtResource("1_mjfgl")
+spread = 180.0
+gravity = Vector2(0, 80)
+initial_velocity_min = 80.0
+initial_velocity_max = 100.0
+angular_velocity_min = 30.0
+angular_velocity_max = 200.0
+scale_amount_min = 0.5
+scale_amount_max = 0.8
+color_ramp = SubResource("Gradient_mstws")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cauxnlw4efj6h"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_du5wt"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_ctlw6"]
+
+[sub_resource type="Curve2D" id="Curve2D_rf4qp"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(-108.146, 53.0252, 108.146, -53.0252, 20, 26, 78.396, 8.759, 78.3956, -8.7594, 42, 91, 121.608, 34.745, -121.608, -34.745, 17, 171)
+}
+point_count = 3
+
+[node name="Number3" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_du5wt")
+width = 128
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(5, 1)
+curve = SubResource("Curve2D_rf4qp")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -82.0
+offset_right = 137.0
+offset_bottom = 260.0
+theme = ExtResource("2_ctlw6")
+text = "3"
+metadata/_edit_lock_ = true

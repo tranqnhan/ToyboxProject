@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyn0t43wjjeji"]
+
+[ext_resource type="PackedScene" uid="uid://bg686hc2mpvmh" path="res://Scenes/LetterTrace/letter_trace_box.tscn" id="1_6codo"]
+[ext_resource type="Script" path="res://Scenes/LetterTrace/trace_session.gd" id="1_a5lco"]
+[ext_resource type="Theme" uid="uid://cogqr3ns3qw04" path="res://Styles/main_theme.tres" id="3_ndyxr"]
+
+[node name="TraceSession" type="Node"]
+script = ExtResource("1_a5lco")
+
+[node name="LetterTraceBox" parent="." instance=ExtResource("1_6codo")]
+modulate = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ProblemGroup" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ProblemGroup"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Problems" type="VBoxContainer" parent="MarginContainer/ProblemGroup/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MenuButton" type="Button" parent="MarginContainer/ProblemGroup"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme = ExtResource("3_ndyxr")
+text = "Back to Menu"
+
+[connection signal="finished" from="LetterTraceBox" to="." method="_on_letter_trace_box_finished"]
+[connection signal="pressed" from="MarginContainer/ProblemGroup/MenuButton" to="." method="_on_menu_button_pressed"]

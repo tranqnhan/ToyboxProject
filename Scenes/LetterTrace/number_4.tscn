@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://qb2nm6qtq71f"]
+
+[ext_resource type="Script" path="res://Scenes/LetterTrace/letter_trace.gd" id="1_ushiv"]
+[ext_resource type="Theme" uid="uid://l7rc3qcn8tai" path="res://Styles/letter_trace_theme.tres" id="2_rsv1t"]
+
+[sub_resource type="Curve2D" id="Curve2D_rf4qp"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 91, 14, 0, 0, 0, 0, 11, 133, 0, 0, 0, 0, 129, 134)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_osd0x"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 98, 14, 0, 0, 0, 0, 98, 173)
+}
+point_count = 2
+
+[node name="Number4" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ushiv")
+width = 137
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_rf4qp")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_osd0x")
+
+[node name="Label" type="Label" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -85.0
+offset_right = 141.0
+offset_bottom = 257.0
+theme = ExtResource("2_rsv1t")
+text = "4"
